@@ -1,7 +1,7 @@
 .movie-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
 }
 
 .skeleton-item {
@@ -10,33 +10,33 @@
 
 .skeleton-poster {
     background-color: #d1d5db;
-    height: 20rem;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
+    height: 320px;
+    border-radius: 8px;
+    margin-bottom: 16px;
 }
 
 .skeleton-title {
     background-color: #d1d5db;
-    height: 1rem;
-    border-radius: 0.25rem;
-    margin-bottom: 0.5rem;
+    height: 16px;
+    border-radius: 4px;
+    margin-bottom: 8px;
 }
 
 .skeleton-subtitle {
     background-color: #d1d5db;
-    height: 1rem;
-    border-radius: 0.25rem;
+    height: 16px;
+    border-radius: 4px;
     width: 66.666667%;
 }
 
 .no-results {
     text-align: center;
-    padding: 3rem 0;
+    padding: 48px 0;
 }
 
 .no-results-text {
     color: #6b7280;
-    font-size: 1.125rem;
+    font-size: 18px;
 }
 
 @keyframes pulse {

@@ -33,11 +33,7 @@ export const MovieGrid: FC<MovieGridProps> = ({ movies, loading = false }) => {
                 title={movie.Title}
                 rating={movie.imdbRating ? parseFloat(movie.imdbRating) : 0}
                 releaseDate={movie.Year}
-                posterUrl={
-                    movie.Poster !== "N/A"
-                        ? movie.Poster
-                        : "/placeholder-poster.svg"
-                }
+                posterUrl={movie.Poster !== "N/A" ? movie.Poster : ""}
                 imdbID={movie.imdbID}
             />
         ))
