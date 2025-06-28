@@ -6,6 +6,8 @@ import { MovieDetailsShort } from "@/omdb/movieDetails"
 import { getPopularMoviesConst } from "@/omdb/omdb-client-requests"
 import { searchMovie } from "@/omdb/omdb-server-requests"
 import { useCallback, useMemo, useState } from "react"
+import Link from "next/link"
+import { HiClock } from "react-icons/hi2"
 import "./page.css"
 
 export default function HomePage() {
@@ -49,7 +51,13 @@ export default function HomePage() {
         <div className="page-container">
             <div className="page-content">
                 <div className="page-header">
-                    <h1 className="page-title">Movie Explorer</h1>
+                    <div className="header-top">
+                        <h1 className="page-title">Movie Explorer</h1>
+                        <Link href="/recently-viewed" className="recent-link">
+                            <HiClock className="recent-icon" />
+                            Recently Viewed
+                        </Link>
+                    </div>
                     <p className="page-subtitle">
                         Discover and search for your favorite movies
                     </p>

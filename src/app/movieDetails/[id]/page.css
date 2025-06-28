@@ -1,6 +1,7 @@
 .movie-details-container {
     min-height: 100vh;
     background-color: #f9fafb;
+    padding-top: 80px; /* Account for fixed navigation */
 }
 
 .movie-details-content {

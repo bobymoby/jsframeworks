@@ -14,11 +14,40 @@
     margin-bottom: 32px;
 }
 
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
 .page-title {
     font-size: 36px;
     font-weight: 700;
     color: #111827;
-    margin-bottom: 16px;
+    margin: 0;
+}
+
+.recent-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+}
+
+.recent-link:hover {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.recent-icon {
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
 .page-subtitle {
