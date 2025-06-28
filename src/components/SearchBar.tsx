@@ -1,5 +1,6 @@
 "use client"
-import { FC, useState } from "react"
+import { FC, useCallback, useState } from "react"
+import "./SearchBar.css"
 
 interface SearchBarProps {
     onSearch: (query: string) => void
@@ -12,30 +13,35 @@ export const SearchBar: FC<SearchBarProps> = ({
 }) => {
     const [query, setQuery] = useState("")
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        if (query.trim()) {
-            onSearch(query.trim())
-        }
-    }
+    const handleSubmit = useCallback(
+        (e: React.FormEvent) => {
+            e.preventDefault()
+            if (query.trim()) {
+                onSearch(query.trim())
+            }
+        },
+        [query, onSearch],
+    )
+
+    const handleInputChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            setQuery(e.target.value)
+        },
+        [],
+    )
 
     return (
-        <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto mb-8">
-            <div className="relative">
+        <form onSubmit={handleSubmit} className="search-form">
+            <div className="search-container">
                 <input
                     type="text"
                     value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    onChange={handleInputChange}
                     placeholder={placeholder}
-                    className="w-full px-4 py-3 pl-12 pr-20 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                    className="search-input"
                 />
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg
-                        className="h-6 w-6 text-gray-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
+                <div className="search-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -44,10 +50,7 @@ export const SearchBar: FC<SearchBarProps> = ({
                         />
                     </svg>
                 </div>
-                <button
-                    type="submit"
-                    className="absolute inset-y-0 right-0 px-4 py-2 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-                >
+                <button type="submit" className="search-button">
                     Search
                 </button>
             </div>

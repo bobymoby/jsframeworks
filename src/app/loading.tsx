@@ -1,7 +1,9 @@
+import "./loading.css"
+
 export default function LoadingPage() {
     return (
-        <div className="flex items-center justify-center h-screen">
-            <p>Loading the app, please wait...</p>
+        <div className="loading-container">
+            <p className="loading-text">Loading the app, please wait...</p>
         </div>
     )
 }

@@ -5,16 +5,17 @@ import { SearchBar } from "@/components/SearchBar"
 import { MovieDetailsShort } from "@/omdb/movieDetails"
 import { getPopularMoviesConst } from "@/omdb/omdb-client-requests"
 import { searchMovie } from "@/omdb/omdb-server-requests"
-import { useState } from "react"
+import { useCallback, useMemo, useState } from "react"
+import "./page.css"
 
 export default function HomePage() {
-    const [movies, setMovies] = useState<MovieDetailsShort[]>(
-        getPopularMoviesConst(),
-    )
+    const initialMovies = useMemo(() => getPopularMoviesConst(), [])
+
+    const [movies, setMovies] = useState<MovieDetailsShort[]>(initialMovies)
     const [loading, setLoading] = useState(false)
     const [searchQuery, setSearchQuery] = useState("")
 
-    const handleSearch = async (query: string) => {
+    const handleSearch = useCallback(async (query: string) => {
         setSearchQuery(query)
         setLoading(true)
         try {
@@ -25,36 +26,46 @@ export default function HomePage() {
         } finally {
             setLoading(false)
         }
-    }
+    }, [])
 
-    const handleClearSearch = () => {
+    const handleClearSearch = useCallback(() => {
         setSearchQuery("")
-        setMovies(getPopularMoviesConst())
-    }
+        setMovies(initialMovies)
+    }, [initialMovies])
+
+    const showSearchResults = useMemo(() => {
+        return searchQuery && !loading
+    }, [searchQuery, loading])
+
+    const showPopularSection = useMemo(() => {
+        return !searchQuery && !loading
+    }, [searchQuery, loading])
+
+    const searchResultsText = useMemo(() => {
+        return `Search results for: "${searchQuery}"`
+    }, [searchQuery])
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-            <div className="container mx-auto px-4 py-8">
-                <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Movie Explorer
-                    </h1>
-                    <p className="text-lg text-gray-600 dark:text-gray-300">
+        <div className="page-container">
+            <div className="page-content">
+                <div className="page-header">
+                    <h1 className="page-title">Movie Explorer</h1>
+                    <p className="page-subtitle">
                         Discover and search for your favorite movies
                     </p>
                 </div>
 
                 <SearchBar onSearch={handleSearch} />
 
-                {searchQuery && (
-                    <div className="flex items-center justify-center mb-6">
-                        <div className="bg-blue-100 dark:bg-blue-900 px-4 py-2 rounded-lg">
-                            <span className="text-blue-800 dark:text-blue-200">
-                                Search results for: {`"${searchQuery}"`}
+                {showSearchResults && (
+                    <div className="search-results">
+                        <div className="search-results-badge">
+                            <span className="search-results-text">
+                                {searchResultsText}
                             </span>
                             <button
                                 onClick={handleClearSearch}
-                                className="ml-2 text-blue-600 dark:text-blue-300 hover:underline"
+                                className="clear-search-button"
                             >
                                 Clear search
                             </button>
@@ -62,12 +73,10 @@ export default function HomePage() {
                     </div>
                 )}
 
-                {!searchQuery && !loading && (
-                    <div className="text-center mb-8">
-                        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-                            Popular Movies
-                        </h2>
-                        <p className="text-gray-600 dark:text-gray-300">
+                {showPopularSection && (
+                    <div className="popular-section">
+                        <h2 className="popular-title">Popular Movies</h2>
+                        <p className="popular-subtitle">
                             Trending movies you might like
                         </p>
                     </div>
