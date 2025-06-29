@@ -10,7 +10,7 @@
     padding: 1rem 0;
 }
 
-.nav-container {
+.navContainer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -19,7 +19,7 @@
     align-items: center;
 }
 
-.nav-home-link {
+.navHomeLink {
     font-size: 1.25rem;
     font-weight: 700;
     color: #667eea;
@@ -27,11 +27,11 @@
     transition: color 0.2s ease;
 }
 
-.nav-home-link:hover {
+.navHomeLink:hover {
     color: #5a67d8;
 }
 
-.nav-recent-link {
+.navRecentLink {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -43,27 +43,12 @@
     transition: all 0.2s ease;
 }
 
-.nav-recent-link:hover {
+.navRecentLink:hover {
     background: rgba(102, 126, 234, 0.1);
     color: #667eea;
 }
 
-.nav-icon {
+.navIcon {
     width: 1.25rem;
     height: 1.25rem;
-}
-
-@media (max-width: 768px) {
-    .nav-container {
-        padding: 0 1rem;
-    }
-
-    .nav-home-link {
-        font-size: 1.125rem;
-    }
-
-    .nav-recent-link {
-        padding: 0.375rem 0.75rem;
-        font-size: 0.875rem;
-    }
 }

@@ -1,14 +1,14 @@
-.search-form {
+.searchForm {
     width: 100%;
     max-width: 672px;
     margin: 0 auto 32px auto;
 }
 
-.search-container {
+.searchContainer {
     position: relative;
 }
 
-.search-input {
+.searchInput {
     width: 100%;
     padding: 12px 16px 12px 48px;
     padding-right: 80px;
@@ -19,11 +19,11 @@
     transition: all 0.2s ease;
 }
 
-.search-input:focus {
+.searchInput:focus {
     border-color: transparent;
 }
 
-.search-icon {
+.searchIcon {
     position: absolute;
     top: 50%;
     left: 12px;
@@ -34,7 +34,7 @@
     pointer-events: none;
 }
 
-.search-button {
+.searchButton {
     position: absolute;
     top: 0;
     right: 0;
@@ -48,10 +48,10 @@
     transition: background-color 0.2s ease;
 }
 
-.search-button:hover {
+.searchButton:hover {
     background-color: #1d4ed8;
 }
 
-.search-button:focus {
+.searchButton:focus {
     outline: none;
 }

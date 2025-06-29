@@ -1,7 +1,7 @@
 "use client"
 import { FC, useCallback, useState } from "react"
 import { HiMagnifyingGlass } from "react-icons/hi2"
-import "./SearchBar.css"
+import styles from "./SearchBar.module.css"
 
 interface SearchBarProps {
     onSearch: (query: string) => void
@@ -32,19 +32,19 @@ export const SearchBar: FC<SearchBarProps> = ({
     )
 
     return (
-        <form onSubmit={handleSubmit} className="search-form">
-            <div className="search-container">
+        <form onSubmit={handleSubmit} className={styles.searchForm}>
+            <div className={styles.searchContainer}>
                 <input
                     type="text"
                     value={query}
                     onChange={handleInputChange}
                     placeholder={placeholder}
-                    className="search-input"
+                    className={styles.searchInput}
                 />
-                <div className="search-icon">
+                <div className={styles.searchIcon}>
                     <HiMagnifyingGlass className="w-6 h-6" />
                 </div>
-                <button type="submit" className="search-button">
+                <button type="submit" className={styles.searchButton}>
                     Search
                 </button>
             </div>

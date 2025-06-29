@@ -1,6 +1,6 @@
 import { FC, useMemo } from "react"
 import { MovieCard } from "./MovieCard"
-import "./MovieGrid.css"
+import styles from "./MovieGrid.module.css"
 
 interface Movie {
     imdbID: string
@@ -18,10 +18,10 @@ interface MovieGridProps {
 export const MovieGrid: FC<MovieGridProps> = ({ movies, loading = false }) => {
     const skeletonItems = useMemo(() => {
         return Array.from({ length: 10 }).map((_, index) => (
-            <div key={index} className="skeleton-item">
-                <div className="skeleton-poster"></div>
-                <div className="skeleton-title"></div>
-                <div className="skeleton-subtitle"></div>
+            <div key={index} className={styles.skeletonItem}>
+                <div className={styles.skeletonPoster}></div>
+                <div className={styles.skeletonTitle}></div>
+                <div className={styles.skeletonSubtitle}></div>
             </div>
         ))
     }, [])
@@ -40,18 +40,18 @@ export const MovieGrid: FC<MovieGridProps> = ({ movies, loading = false }) => {
     }, [movies])
 
     if (loading) {
-        return <div className="movie-grid">{skeletonItems}</div>
+        return <div className={styles.movieGrid}>{skeletonItems}</div>
     }
 
     if (movies.length === 0) {
         return (
-            <div className="no-results">
-                <div className="no-results-text">
+            <div className={styles.noResults}>
+                <div className={styles.noResultsText}>
                     No movies found. Try searching for something else!
                 </div>
             </div>
         )
     }
 
-    return <div className="movie-grid">{movieCards}</div>
+    return <div className={styles.movieGrid}>{movieCards}</div>
 }

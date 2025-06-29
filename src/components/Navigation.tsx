@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { HiClock } from "react-icons/hi2"
-import "./Navigation.css"
+import styles from "./Navigation.module.css"
 
 export const Navigation: React.FC = () => {
     const pathname = usePathname()
@@ -12,13 +12,13 @@ export const Navigation: React.FC = () => {
     if (pathname === "/") return null
 
     return (
-        <nav className="navigation">
-            <div className="nav-container">
-                <Link href="/" className="nav-home-link">
+        <nav className={styles.navigation}>
+            <div className={styles.navContainer}>
+                <Link href="/" className={styles.navHomeLink}>
                     Movie Explorer
                 </Link>
-                <Link href="/recently-viewed" className="nav-recent-link">
-                    <HiClock className="nav-icon" />
+                <Link href="/recently-viewed" className={styles.navRecentLink}>
+                    <HiClock className={styles.navIcon} />
                     Recently Viewed
                 </Link>
             </div>

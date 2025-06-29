@@ -1,34 +1,34 @@
-.page-container {
+.pageContainer {
     min-height: 100vh;
     background-color: #f9fafb;
 }
 
-.page-content {
+.pageContent {
     max-width: 1200px;
     margin: 0 auto;
     padding: 32px 16px;
 }
 
-.page-header {
+.pageHeader {
     text-align: center;
     margin-bottom: 32px;
 }
 
-.header-top {
+.headerTop {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
 }
 
-.page-title {
+.pageTitle {
     font-size: 36px;
     font-weight: 700;
     color: #111827;
     margin: 0;
 }
 
-.recent-link {
+.recentLink {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -41,60 +41,60 @@
     font-size: 0.875rem;
 }
 
-.recent-link:hover {
+.recentLink:hover {
     background: rgba(102, 126, 234, 0.1);
 }
 
-.recent-icon {
+.recentIcon {
     width: 1.25rem;
     height: 1.25rem;
 }
 
-.page-subtitle {
+.pageSubtitle {
     font-size: 18px;
     color: #4b5563;
 }
 
-.search-results {
+.searchResults {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 24px;
 }
 
-.search-results-badge {
+.searchResultsBadge {
     background-color: #dbeafe;
     padding: 8px 16px;
     border-radius: 8px;
 }
 
-.search-results-text {
+.searchResultsText {
     color: #1e40af;
 }
 
-.clear-search-button {
+.clearSearchButton {
     margin-left: 8px;
     color: #2563eb;
     text-decoration: none;
     cursor: pointer;
 }
 
-.clear-search-button:hover {
+.clearSearchButton:hover {
     text-decoration: underline;
 }
 
-.popular-section {
+.popularSection {
     text-align: center;
     margin-bottom: 32px;
 }
 
-.popular-title {
+.popularTitle {
     font-size: 24px;
     font-weight: 600;
     color: #111827;
     margin-bottom: 8px;
 }
 
-.popular-subtitle {
+.popularSubtitle {
     color: #4b5563;
 }

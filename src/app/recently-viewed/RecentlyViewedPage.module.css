@@ -1,27 +1,27 @@
-.page-container {
+.pageContainer {
     min-height: 100vh;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 2rem 1rem;
-    padding-top: 100px; /* Account for fixed navigation */
+    padding-top: 100px;
 }
 
-.page-content {
+.pageContent {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.page-header {
+.pageHeader {
     margin-bottom: 2rem;
 }
 
-.header-top {
+.headerTop {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
 }
 
-.back-link {
+.backLink {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -31,16 +31,16 @@
     transition: opacity 0.2s ease;
 }
 
-.back-link:hover {
+.backLink:hover {
     opacity: 0.8;
 }
 
-.back-icon {
+.backIcon {
     width: 1.25rem;
     height: 1.25rem;
 }
 
-.clear-history-button {
+.clearHistoryButton {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -54,17 +54,17 @@
     font-size: 0.875rem;
 }
 
-.clear-history-button:hover {
+.clearHistoryButton:hover {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-.clear-icon {
+.clearIcon {
     width: 1rem;
     height: 1rem;
 }
 
-.page-title {
+.pageTitle {
     font-size: 2.5rem;
     font-weight: 700;
     color: white;
@@ -72,21 +72,21 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.page-subtitle {
+.pageSubtitle {
     font-size: 1.125rem;
     color: rgba(255, 255, 255, 0.9);
     margin: 0;
     font-weight: 400;
 }
 
-.no-recent-movies {
+.noRecentMovies {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 400px;
 }
 
-.no-recent-movies-content {
+.noRecentMoviesContent {
     text-align: center;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -95,20 +95,20 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.no-recent-title {
+.noRecentTitle {
     font-size: 1.5rem;
     font-weight: 600;
     color: white;
     margin: 0 0 1rem 0;
 }
 
-.no-recent-text {
+.noRecentText {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
     margin: 0 0 2rem 0;
 }
 
-.browse-movies-button {
+.browseMoviesButton {
     display: inline-flex;
     align-items: center;
     background: white;
@@ -148,28 +148,4 @@
     font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
-}
-
-@media (max-width: 768px) {
-    .page-container {
-        padding: 1rem 0.5rem;
-    }
-
-    .page-title {
-        font-size: 2rem;
-    }
-
-    .header-top {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
-
-    .recent-movies-section {
-        padding: 1.5rem;
-    }
-
-    .no-recent-movies-content {
-        padding: 2rem 1.5rem;
-    }
 }

@@ -8,7 +8,7 @@ import { searchMovie } from "@/omdb/omdb-server-requests"
 import { useCallback, useMemo, useState } from "react"
 import Link from "next/link"
 import { HiClock } from "react-icons/hi2"
-import "./page.css"
+import styles from "./HomePage.module.css"
 
 export default function HomePage() {
     const initialMovies = useMemo(() => getPopularMoviesConst(), [])
@@ -48,17 +48,20 @@ export default function HomePage() {
     }, [searchQuery])
 
     return (
-        <div className="page-container">
-            <div className="page-content">
-                <div className="page-header">
-                    <div className="header-top">
-                        <h1 className="page-title">Movie Explorer</h1>
-                        <Link href="/recently-viewed" className="recent-link">
-                            <HiClock className="recent-icon" />
+        <div className={styles.pageContainer}>
+            <div className={styles.pageContent}>
+                <div className={styles.pageHeader}>
+                    <div className={styles.headerTop}>
+                        <h1 className={styles.pageTitle}>Movie Explorer</h1>
+                        <Link
+                            href="/recently-viewed"
+                            className={styles.recentLink}
+                        >
+                            <HiClock className={styles.recentIcon} />
                             Recently Viewed
                         </Link>
                     </div>
-                    <p className="page-subtitle">
+                    <p className={styles.pageSubtitle}>
                         Discover and search for your favorite movies
                     </p>
                 </div>
@@ -66,14 +69,14 @@ export default function HomePage() {
                 <SearchBar onSearch={handleSearch} />
 
                 {showSearchResults && (
-                    <div className="search-results">
-                        <div className="search-results-badge">
-                            <span className="search-results-text">
+                    <div className={styles.searchResults}>
+                        <div className={styles.searchResultsBadge}>
+                            <span className={styles.searchResultsText}>
                                 {searchResultsText}
                             </span>
                             <button
                                 onClick={handleClearSearch}
-                                className="clear-search-button"
+                                className={styles.clearSearchButton}
                             >
                                 Clear search
                             </button>
@@ -82,9 +85,9 @@ export default function HomePage() {
                 )}
 
                 {showPopularSection && (
-                    <div className="popular-section">
-                        <h2 className="popular-title">Popular Movies</h2>
-                        <p className="popular-subtitle">
+                    <div className={styles.popularSection}>
+                        <h2 className={styles.popularTitle}>Popular Movies</h2>
+                        <p className={styles.popularSubtitle}>
                             Trending movies you might like
                         </p>
                     </div>

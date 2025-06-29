@@ -5,7 +5,7 @@ import Link from "next/link"
 import { HiArrowLeft } from "react-icons/hi2"
 import { FaStar } from "react-icons/fa"
 import { MovieDetailsTracker } from "@/components/MovieDetailsTracker"
-import "./page.css"
+import styles from "./MovieDetailsPage.module.css"
 
 export default async function MovieDetailsPage({
     params,
@@ -21,17 +21,17 @@ export default async function MovieDetailsPage({
 
     return (
         <MovieDetailsTracker movie={movie}>
-            <div className="movie-details-container">
-                <div className="movie-details-content">
-                    <Link href="/" className="back-link">
-                        <HiArrowLeft className="back-icon" />
+            <div className={styles.movieDetailsContainer}>
+                <div className={styles.movieDetailsContent}>
+                    <Link href="/" className={styles.backLink}>
+                        <HiArrowLeft className={styles.backIcon} />
                         Back to Movies
                     </Link>
 
-                    <div className="movie-details-card">
-                        <div className="movie-details-layout">
-                            <div className="movie-poster-section">
-                                <div className="movie-poster-container">
+                    <div className={styles.movieDetailsCard}>
+                        <div className={styles.movieDetailsLayout}>
+                            <div className={styles.moviePosterSection}>
+                                <div className={styles.moviePosterContainer}>
                                     <Image
                                         src={
                                             movie.Poster !== "N/A"
@@ -40,64 +40,92 @@ export default async function MovieDetailsPage({
                                         }
                                         alt={`${movie.Title} poster`}
                                         fill
-                                        className="movie-poster"
+                                        className={styles.moviePoster}
                                         sizes="33vw"
                                     />
                                 </div>
                             </div>
-                            <div className="movie-info-section">
-                                <div className="movie-header">
-                                    <div className="movie-title-section">
-                                        <h1 className="movie-title">
+                            <div className={styles.movieInfoSection}>
+                                <div className={styles.movieHeader}>
+                                    <div className={styles.movieTitleSection}>
+                                        <h1 className={styles.movieTitle}>
                                             {movie.Title}
                                         </h1>
-                                        <p className="movie-meta">
+                                        <p className={styles.movieMeta}>
                                             {movie.Year} • {movie.Runtime} •{" "}
                                             {movie.Rated}
                                         </p>
                                     </div>
-                                    <div className="movie-rating-badge">
-                                        <FaStar className="movie-rating-icon" />
-                                        <span className="movie-rating-text">
+                                    <div className={styles.movieRatingBadge}>
+                                        <FaStar
+                                            className={styles.movieRatingIcon}
+                                        />
+                                        <span
+                                            className={styles.movieRatingText}
+                                        >
                                             {movie.imdbRating}
                                         </span>
                                     </div>
                                 </div>
 
-                                <div className="movie-details-content-section">
-                                    <div className="movie-section">
-                                        <h3 className="movie-section-title">
+                                <div
+                                    className={
+                                        styles.movieDetailsContentSection
+                                    }
+                                >
+                                    <div className={styles.movieSection}>
+                                        <h3
+                                            className={styles.movieSectionTitle}
+                                        >
                                             Plot
                                         </h3>
-                                        <p className="movie-section-text">
+                                        <p className={styles.movieSectionText}>
                                             {movie.Plot}
                                         </p>
                                     </div>
 
-                                    <div className="movie-details-grid">
-                                        <div className="movie-section">
-                                            <h3 className="movie-section-title">
+                                    <div className={styles.movieDetailsGrid}>
+                                        <div className={styles.movieSection}>
+                                            <h3
+                                                className={
+                                                    styles.movieSectionTitle
+                                                }
+                                            >
                                                 Director
                                             </h3>
-                                            <p className="movie-section-text">
+                                            <p
+                                                className={
+                                                    styles.movieSectionText
+                                                }
+                                            >
                                                 {movie.Director}
                                             </p>
                                         </div>
-                                        <div className="movie-section">
-                                            <h3 className="movie-section-title">
+                                        <div className={styles.movieSection}>
+                                            <h3
+                                                className={
+                                                    styles.movieSectionTitle
+                                                }
+                                            >
                                                 Genre
                                             </h3>
-                                            <p className="movie-section-text">
+                                            <p
+                                                className={
+                                                    styles.movieSectionText
+                                                }
+                                            >
                                                 {movie.Genre}
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className="movie-section">
-                                        <h3 className="movie-section-title">
+                                    <div className={styles.movieSection}>
+                                        <h3
+                                            className={styles.movieSectionTitle}
+                                        >
                                             Cast
                                         </h3>
-                                        <p className="movie-section-text">
+                                        <p className={styles.movieSectionText}>
                                             {movie.Actors}
                                         </p>
                                     </div>

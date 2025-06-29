@@ -1,11 +1,11 @@
-.loading-container {
+.loadingContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
 
-.loading-text {
+.loadingText {
     font-size: 18px;
     color: #4b5563;
 }

@@ -10,7 +10,7 @@ import {
 import Link from "next/link"
 import { HiArrowLeft } from "react-icons/hi2"
 import { HiTrash } from "react-icons/hi2"
-import "./page.css"
+import styles from "./RecentlyViewedPage.module.css"
 
 export default function RecentlyViewedPage() {
     const [recentlyViewed, setRecentlyViewed] = useState<RecentlyViewedMovie[]>(
@@ -41,52 +41,55 @@ export default function RecentlyViewedPage() {
     }
 
     return (
-        <div className="page-container">
-            <div className="page-content">
-                <div className="page-header">
-                    <div className="header-top">
-                        <Link href="/" className="back-link">
-                            <HiArrowLeft className="back-icon" />
+        <div className={styles.pageContainer}>
+            <div className={styles.pageContent}>
+                <div className={styles.pageHeader}>
+                    <div className={styles.headerTop}>
+                        <Link href="/" className={styles.backLink}>
+                            <HiArrowLeft className={styles.backIcon} />
                             Back to Movies
                         </Link>
                         {recentlyViewed.length > 0 && (
                             <button
                                 onClick={handleClearHistory}
-                                className="clear-history-button"
+                                className={styles.clearHistoryButton}
                                 title="Clear viewing history"
                             >
-                                <HiTrash className="clear-icon" />
+                                <HiTrash className={styles.clearIcon} />
                                 Clear History
                             </button>
                         )}
                     </div>
-                    <h1 className="page-title">Recently Viewed Movies</h1>
-                    <p className="page-subtitle">
+                    <h1 className={styles.pageTitle}>Recently Viewed Movies</h1>
+                    <p className={styles.pageSubtitle}>
                         Your recently viewed movies and shows
                     </p>
                 </div>
 
                 {recentlyViewed.length === 0 ? (
-                    <div className="no-recent-movies">
-                        <div className="no-recent-movies-content">
-                            <h2 className="no-recent-title">
+                    <div className={styles.noRecentMovies}>
+                        <div className={styles.noRecentMoviesContent}>
+                            <h2 className={styles.noRecentTitle}>
                                 No recently viewed movies
                             </h2>
-                            <p className="no-recent-text">
+                            <p className={styles.noRecentText}>
                                 Start exploring movies to see them here!
                             </p>
-                            <Link href="/" className="browse-movies-button">
+                            <Link
+                                href="/"
+                                className={styles.browseMoviesButton}
+                            >
                                 Browse Movies
                             </Link>
                         </div>
                     </div>
                 ) : (
-                    <div className="recent-movies-section">
-                        <div className="recent-movies-header">
-                            <h2 className="recent-movies-title">
+                    <div className={styles.recentMoviesSection}>
+                        <div className={styles.recentMoviesHeader}>
+                            <h2 className={styles.recentMoviesTitle}>
                                 Recently Viewed ({recentlyViewed.length})
                             </h2>
-                            <p className="recent-movies-subtitle">
+                            <p className={styles.recentMoviesSubtitle}>
                                 Last viewed:{" "}
                                 {formatTimeAgo(
                                     recentlyViewed[0]?.viewedAt || 0,

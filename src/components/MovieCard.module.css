@@ -1,8 +1,8 @@
-.movie-card-link {
+.movieCardLink {
     display: block;
 }
 
-.movie-card {
+.movieCard {
     background-color: white;
     border-radius: 8px;
     overflow: hidden;
@@ -10,21 +10,21 @@
     height: 432px;
 }
 
-.movie-card-poster {
+.movieCardPoster {
     position: relative;
     height: 320px;
     width: 100%;
 }
 
-.movie-card-poster img {
+.movieCardPoster img {
     object-fit: cover;
 }
 
-.movie-card-content {
+.movieCardContent {
     padding: 16px;
 }
 
-.movie-title {
+.movieTitle {
     font-size: 18px;
     font-weight: 600;
     color: #111827;
@@ -39,7 +39,7 @@
     max-width: 100%;
 }
 
-.movie-info {
+.movieInfo {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,12 +47,12 @@
     color: #4b5563;
 }
 
-.movie-rating {
+.movieRating {
     display: flex;
     align-items: center;
 }
 
-.movie-rating-icon {
+.movieRatingIcon {
     width: 16px;
     height: 16px;
     color: #eab308;

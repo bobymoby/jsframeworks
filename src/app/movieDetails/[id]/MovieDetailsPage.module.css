@@ -1,16 +1,16 @@
-.movie-details-container {
+.movieDetailsContainer {
     min-height: 100vh;
     background-color: #f9fafb;
     padding-top: 80px; /* Account for fixed navigation */
 }
 
-.movie-details-content {
+.movieDetailsContent {
     max-width: 1200px;
     margin: 0 auto;
     padding: 32px 16px;
 }
 
-.back-link {
+.backLink {
     display: inline-flex;
     align-items: center;
     color: #2563eb;
@@ -18,66 +18,66 @@
     margin-bottom: 24px;
 }
 
-.back-link:hover {
+.backLink:hover {
     text-decoration: underline;
 }
 
-.back-icon {
+.backIcon {
     width: 16px;
     height: 16px;
     margin-right: 8px;
 }
 
-.movie-details-card {
+.movieDetailsCard {
     background-color: white;
     border-radius: 8px;
     overflow: hidden;
 }
 
-.movie-details-layout {
+.movieDetailsLayout {
     display: flex;
     flex-direction: column;
 }
 
-.movie-poster-section {
+.moviePosterSection {
     width: 100%;
 }
 
-.movie-poster-container {
+.moviePosterContainer {
     position: relative;
     height: 384px;
     width: 100%;
 }
 
-.movie-poster {
+.moviePoster {
     object-fit: cover;
 }
 
-.movie-info-section {
+.movieInfoSection {
     width: 100%;
     padding: 24px;
 }
 
-.movie-header {
+.movieHeader {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 16px;
 }
 
-.movie-title-section h1 {
+.movieTitleSection h1 {
     font-size: 30px;
     font-weight: 700;
     color: #111827;
     margin-bottom: 8px;
 }
 
-.movie-meta {
+.movieMeta {
     font-size: 18px;
     color: #4b5563;
 }
 
-.movie-rating-badge {
+.movieRatingBadge {
     display: flex;
     align-items: center;
     background-color: #fef3c7;
@@ -85,41 +85,41 @@
     border-radius: 8px;
 }
 
-.movie-rating-icon {
+.movieRatingIcon {
     width: 20px;
     height: 20px;
     color: #d97706;
     margin-right: 4px;
 }
 
-.movie-rating-text {
+.movieRatingText {
     color: #92400e;
     font-weight: 600;
 }
 
-.movie-details-content-section {
+.movieDetailsContentSection {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.movie-section {
+.movieSection {
     margin-bottom: 16px;
 }
 
-.movie-section-title {
+.movieSectionTitle {
     font-size: 18px;
     font-weight: 600;
     color: #111827;
     margin-bottom: 8px;
 }
 
-.movie-section-text {
+.movieSectionText {
     color: #374151;
     line-height: 1.625;
 }
 
-.movie-details-grid {
+.movieDetailsGrid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;

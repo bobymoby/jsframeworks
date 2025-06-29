@@ -1,40 +1,40 @@
-.movie-grid {
+.movieGrid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 24px;
 }
 
-.skeleton-item {
+.skeletonItem {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.skeleton-poster {
+.skeletonPoster {
     background-color: #d1d5db;
     height: 320px;
     border-radius: 8px;
     margin-bottom: 16px;
 }
 
-.skeleton-title {
+.skeletonTitle {
     background-color: #d1d5db;
     height: 16px;
     border-radius: 4px;
     margin-bottom: 8px;
 }
 
-.skeleton-subtitle {
+.skeletonSubtitle {
     background-color: #d1d5db;
     height: 16px;
     border-radius: 4px;
     width: 66.666667%;
 }
 
-.no-results {
+.noResults {
     text-align: center;
     padding: 48px 0;
 }
 
-.no-results-text {
+.noResultsText {
     color: #6b7280;
     font-size: 18px;
 }

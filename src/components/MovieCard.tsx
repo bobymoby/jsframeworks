@@ -2,7 +2,7 @@ import { FC, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { FaStar } from "react-icons/fa"
-import "./MovieCard.css"
+import styles from "./MovieCard.module.css"
 
 interface MovieCardProps {
     title: string
@@ -28,22 +28,22 @@ export const MovieCard: FC<MovieCardProps> = ({
     }, [title])
 
     return (
-        <Link href={`/movieDetails/${imdbID}`} className="movie-card-link">
-            <div className="movie-card">
-                <div className="movie-card-poster">
+        <Link href={`/movieDetails/${imdbID}`} className={styles.movieCardLink}>
+            <div className={styles.movieCard}>
+                <div className={styles.movieCardPoster}>
                     <Image
                         src={posterUrl}
                         alt={imageAlt}
                         fill
-                        className="movie-poster"
+                        className={styles.moviePoster}
                         sizes="25vw"
                     />
                 </div>
-                <div className="movie-card-content">
-                    <h2 className="movie-title">{title}</h2>
-                    <div className="movie-info">
-                        <span className="movie-rating">
-                            <FaStar className="movie-rating-icon" />
+                <div className={styles.movieCardContent}>
+                    <h2 className={styles.movieTitle}>{title}</h2>
+                    <div className={styles.movieInfo}>
+                        <span className={styles.movieRating}>
+                            <FaStar className={styles.movieRatingIcon} />
                             {formattedRating}
                         </span>
                         <span>{releaseDate}</span>
