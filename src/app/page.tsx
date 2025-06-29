@@ -1,7 +1,7 @@
 "use client"
 
-import { MovieGrid } from "@/components/MovieGrid"
-import { SearchBar } from "@/components/SearchBar"
+import { MovieGrid } from "@/components/MovieGrid/MovieGrid"
+import { SearchBar } from "@/components/SearchBar/SearchBar"
 import { MovieDetailsShort } from "@/omdb/movieDetails"
 import { getPopularMoviesConst } from "@/omdb/omdb-client-requests"
 import { searchMovie } from "@/omdb/omdb-server-requests"

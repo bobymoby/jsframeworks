@@ -1,30 +1,21 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { MovieGrid } from "@/components/MovieGrid"
-import {
-    RecentlyViewedMovie,
-    getRecentlyViewedMovies,
-    clearRecentlyViewedMovies,
-} from "@/utils/recentlyViewed"
+import { MovieGrid } from "@/components/MovieGrid/MovieGrid"
+import { useAppSelector, useAppDispatch } from "@/store/hooks"
+import { clearMovies, RecentlyViewedMovie } from "@/store/recentlyViewedSlice"
 import Link from "next/link"
 import { HiArrowLeft } from "react-icons/hi2"
 import { HiTrash } from "react-icons/hi2"
 import styles from "./RecentlyViewedPage.module.css"
 
 export default function RecentlyViewedPage() {
-    const [recentlyViewed, setRecentlyViewed] = useState<RecentlyViewedMovie[]>(
-        [],
+    const recentlyViewed = useAppSelector(
+        (state) => state.recentlyViewed.movies,
     )
-
-    useEffect(() => {
-        const movies = getRecentlyViewedMovies()
-        setRecentlyViewed(movies)
-    }, [])
+    const dispatch = useAppDispatch()
 
     const handleClearHistory = () => {
-        clearRecentlyViewedMovies()
-        setRecentlyViewed([])
+        dispatch(clearMovies())
     }
 
     const formatTimeAgo = (timestamp: number) => {
@@ -97,13 +88,15 @@ export default function RecentlyViewedPage() {
                             </p>
                         </div>
                         <MovieGrid
-                            movies={recentlyViewed.map((movie) => ({
-                                imdbID: movie.imdbID,
-                                Title: movie.Title,
-                                Year: movie.Year,
-                                Poster: movie.Poster,
-                                imdbRating: movie.imdbRating,
-                            }))}
+                            movies={recentlyViewed.map(
+                                (movie: RecentlyViewedMovie) => ({
+                                    imdbID: movie.imdbID,
+                                    Title: movie.Title,
+                                    Year: movie.Year,
+                                    Poster: movie.Poster,
+                                    imdbRating: movie.imdbRating,
+                                }),
+                            )}
                         />
                     </div>
                 )}

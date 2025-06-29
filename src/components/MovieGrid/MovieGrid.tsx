@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react"
-import { MovieCard } from "./MovieCard"
+import { MovieCard } from "../MovieCard/MovieCard"
 import styles from "./MovieGrid.module.css"
 
 interface Movie {
