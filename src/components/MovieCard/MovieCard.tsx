@@ -1,38 +1,32 @@
-import { FC, useMemo } from "react"
+import { MovieDetailsShort } from "@/omdb/DTOs/movieDetails"
 import Image from "next/image"
 import Link from "next/link"
+import { FC, useMemo } from "react"
 import { FaStar } from "react-icons/fa"
 import styles from "./MovieCard.module.css"
 
 interface MovieCardProps {
-    title: string
-    rating: number
-    releaseDate: string
-    posterUrl: string
-    imdbID: string
+    movie: MovieDetailsShort & { rating?: number }
 }
 
-export const MovieCard: FC<MovieCardProps> = ({
-    title,
-    rating,
-    releaseDate,
-    posterUrl,
-    imdbID,
-}) => {
+export const MovieCard: FC<MovieCardProps> = ({ movie }) => {
     const formattedRating = useMemo(() => {
-        return rating > 0 ? rating.toFixed(1) : "N/A"
-    }, [rating])
+        return movie.rating ? movie.rating.toFixed(1) : "N/A"
+    }, [movie.rating])
 
     const imageAlt = useMemo(() => {
-        return `${title} poster`
-    }, [title])
+        return `${movie.Title} poster`
+    }, [movie.Title])
 
     return (
-        <Link href={`/movieDetails/${imdbID}`} className={styles.movieCardLink}>
+        <Link
+            href={`/movieDetails/${movie.imdbID}`}
+            className={styles.movieCardLink}
+        >
             <div className={styles.movieCard}>
                 <div className={styles.movieCardPoster}>
                     <Image
-                        src={posterUrl}
+                        src={movie.Poster}
                         alt={imageAlt}
                         fill
                         className={styles.moviePoster}
@@ -40,13 +34,13 @@ export const MovieCard: FC<MovieCardProps> = ({
                     />
                 </div>
                 <div className={styles.movieCardContent}>
-                    <h2 className={styles.movieTitle}>{title}</h2>
+                    <h2 className={styles.movieTitle}>{movie.Title}</h2>
                     <div className={styles.movieInfo}>
                         <span className={styles.movieRating}>
                             <FaStar className={styles.movieRatingIcon} />
                             {formattedRating}
                         </span>
-                        <span>{releaseDate}</span>
+                        <span>{movie.Year}</span>
                     </div>
                 </div>
             </div>

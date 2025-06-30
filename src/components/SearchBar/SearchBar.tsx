@@ -1,4 +1,5 @@
 "use client"
+
 import { FC, useCallback, useState } from "react"
 import { HiMagnifyingGlass } from "react-icons/hi2"
 import styles from "./SearchBar.module.css"

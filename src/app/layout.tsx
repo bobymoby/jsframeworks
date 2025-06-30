@@ -1,9 +1,9 @@
+import { Navigation } from "@/components/Navigation/Navigation"
+import { ReduxProvider } from "@/components/UtilityComponents/ReduxProvider"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { Navigation } from "@/components/Navigation/Navigation"
-import { ReduxProvider } from "@/components/ReduxProvider"
-import "./globals.css"
 import { PropsWithChildren } from "react"
+import "./globals.css"
 
 const geistSans = Geist({
     variable: "--font-geist-sans",

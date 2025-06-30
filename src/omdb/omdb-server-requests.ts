@@ -1,12 +1,9 @@
 "use server"
 
 import { jsonFetch } from "../utils/jsonFetch"
-import {
-    MovieDetails,
-    MovieDetailsSearch,
-    MovieDetailsShort,
-} from "./movieDetails"
-import { POPULAR_MOVIES } from "./popularMovies"
+import { MovieDetailsFull, MovieDetailsShort } from "./DTOs/movieDetails"
+import { MovieSearchResponse } from "./DTOs/searchResponse"
+import { fixMoviePoster } from "./fixMoviePoster"
 
 const OMDB_KEY = process.env.OMDB_API_KEY
 const OMDB_BASE_URL = "https://www.omdbapi.com/"
@@ -16,8 +13,8 @@ type PlotType = "short" | "full"
 export const findMovieByImdbID = async (
     imdbID: string,
     plot: PlotType = "short",
-): Promise<MovieDetails | null> => {
-    const data = await jsonFetch<MovieDetails>(
+): Promise<MovieDetailsFull | null> => {
+    const data = await jsonFetch<MovieDetailsFull>(
         `${OMDB_BASE_URL}?apikey=${OMDB_KEY}&i=${imdbID}&plot=${plot}`,
     )
 
@@ -26,14 +23,14 @@ export const findMovieByImdbID = async (
         return null
     }
 
-    return data as MovieDetails
+    return fixMoviePoster(data)
 }
 
 export const findMovieByName = async (
     movieName: string,
     plot: PlotType = "short",
-): Promise<MovieDetails | null> => {
-    const data = await jsonFetch<MovieDetails>(
+): Promise<MovieDetailsFull | null> => {
+    const data = await jsonFetch<MovieDetailsFull>(
         `${OMDB_BASE_URL}?apikey=${OMDB_KEY}&t=${encodeURIComponent(
             movieName,
         )}&plot=${plot}`,
@@ -44,13 +41,13 @@ export const findMovieByName = async (
         return null
     }
 
-    return data as MovieDetails
+    return fixMoviePoster(data)
 }
 
 export const searchMovie = async (
     searchTerm: string,
 ): Promise<MovieDetailsShort[]> => {
-    const data = await jsonFetch<MovieDetailsSearch>(
+    const data = await jsonFetch<MovieSearchResponse>(
         `${OMDB_BASE_URL}?apikey=${OMDB_KEY}&s=${encodeURIComponent(
             searchTerm,
         )}`,
@@ -60,15 +57,5 @@ export const searchMovie = async (
         return []
     }
 
-    return data.Search
-}
-
-export const getPopularMoviesQuery = async (): Promise<MovieDetails[]> => {
-    const movies = (
-        await Promise.all(
-            POPULAR_MOVIES.map((movieName) => findMovieByName(movieName)),
-        )
-    ).filter((movie) => movie !== null)
-
-    return movies
+    return data.Search.map((movie) => fixMoviePoster(movie))
 }

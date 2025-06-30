@@ -1,6 +1,12 @@
-export type MovieDetails = {
+export type MovieDetailsShort = {
     Title: string
     Year: string
+    imdbID: string
+    Type: string
+    Poster: string
+}
+
+export type MovieDetailsFull = MovieDetailsShort & {
     Rated: string
     Released: string
     Runtime: string
@@ -12,7 +18,6 @@ export type MovieDetails = {
     Language: string
     Country: string
     Awards: string
-    Poster: string
     Ratings: {
         Source: string
         Value: string
@@ -20,27 +25,10 @@ export type MovieDetails = {
     Metascore: string
     imdbRating: string
     imdbVotes: string
-    imdbID: string
-    Type: string
     DVD: string
     BoxOffice: string
     Production: string
     Website: string
-    Response: "True" | "False"
-    Error?: string
-}
-
-export type MovieDetailsShort = {
-    Title: string
-    Year: string
-    imdbID: string
-    Type: string
-    Poster: string
-}
-
-export type MovieDetailsSearch = {
-    Search: MovieDetailsShort[]
-    totalResults: string
     Response: "True" | "False"
     Error?: string
 }

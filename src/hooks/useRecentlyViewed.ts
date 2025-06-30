@@ -1,14 +1,9 @@
-import { useEffect } from "react"
+import { MovieDetailsShort } from "@/omdb/DTOs/movieDetails"
 import { useAppDispatch } from "@/store/hooks"
 import { addMovie } from "@/store/recentlyViewedSlice"
+import { useEffect } from "react"
 
-export const useRecentlyViewed = (movie: {
-    imdbID: string
-    Title: string
-    Year: string
-    Poster: string
-    imdbRating?: string
-}) => {
+export const useRecentlyViewed = (movie: MovieDetailsShort) => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {

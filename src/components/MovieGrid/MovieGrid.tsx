@@ -1,17 +1,10 @@
+import { MovieDetailsShort } from "@/omdb/DTOs/movieDetails"
 import { FC, useMemo } from "react"
 import { MovieCard } from "../MovieCard/MovieCard"
 import styles from "./MovieGrid.module.css"
 
-interface Movie {
-    imdbID: string
-    Title: string
-    Year: string
-    Poster: string
-    imdbRating?: string
-}
-
 interface MovieGridProps {
-    movies: Movie[]
+    movies: MovieDetailsShort[]
     loading?: boolean
 }
 
@@ -28,14 +21,7 @@ export const MovieGrid: FC<MovieGridProps> = ({ movies, loading = false }) => {
 
     const movieCards = useMemo(() => {
         return movies.map((movie) => (
-            <MovieCard
-                key={movie.imdbID}
-                title={movie.Title}
-                rating={movie.imdbRating ? parseFloat(movie.imdbRating) : 0}
-                releaseDate={movie.Year}
-                posterUrl={movie.Poster !== "N/A" ? movie.Poster : ""}
-                imdbID={movie.imdbID}
-            />
+            <MovieCard key={movie.imdbID} movie={movie} />
         ))
     }, [movies])
 

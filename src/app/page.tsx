@@ -2,17 +2,17 @@
 
 import { MovieGrid } from "@/components/MovieGrid/MovieGrid"
 import { SearchBar } from "@/components/SearchBar/SearchBar"
-import { MovieDetailsShort } from "@/omdb/movieDetails"
-import { getPopularMoviesConst } from "@/omdb/omdb-client-requests"
-import { searchMovie } from "@/omdb/omdb-server-requests"
-import { useCallback, useMemo, useState } from "react"
+import { MovieDetailsShort } from "@/omdb/DTOs/movieDetails"
 import Link from "next/link"
+import { useCallback, useMemo, useState } from "react"
 import { HiClock } from "react-icons/hi2"
 import styles from "./HomePage.module.css"
+import { getPopularMovies } from "@/omdb/omdb-client-requests"
+import { searchMovie } from "@/omdb/omdb-server-requests"
+
+const initialMovies = getPopularMovies()
 
 export default function HomePage() {
-    const initialMovies = useMemo(() => getPopularMoviesConst(), [])
-
     const [movies, setMovies] = useState<MovieDetailsShort[]>(initialMovies)
     const [loading, setLoading] = useState(false)
     const [searchQuery, setSearchQuery] = useState("")
@@ -33,7 +33,7 @@ export default function HomePage() {
     const handleClearSearch = useCallback(() => {
         setSearchQuery("")
         setMovies(initialMovies)
-    }, [initialMovies])
+    }, [])
 
     const showSearchResults = useMemo(() => {
         return searchQuery && !loading

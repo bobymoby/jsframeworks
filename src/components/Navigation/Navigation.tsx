@@ -8,7 +8,6 @@ import styles from "./Navigation.module.css"
 export const Navigation: React.FC = () => {
     const pathname = usePathname()
 
-    // Don't show navigation on the main page
     if (pathname === "/") return null
 
     return (

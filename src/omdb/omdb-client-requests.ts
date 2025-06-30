@@ -1,7 +1,5 @@
-"use client"
-
-import { MovieDetails } from "./movieDetails"
+import { MovieDetailsFull } from "./DTOs/movieDetails"
 import POPULAR_MOVIES_PREFETCHED from "./popularMoviesPrefetch.json"
 
-export const getPopularMoviesConst = (): MovieDetails[] =>
-    POPULAR_MOVIES_PREFETCHED as MovieDetails[]
+export const getPopularMovies = (): MovieDetailsFull[] =>
+    POPULAR_MOVIES_PREFETCHED as MovieDetailsFull[]

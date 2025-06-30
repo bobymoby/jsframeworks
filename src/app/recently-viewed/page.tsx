@@ -1,12 +1,25 @@
 "use client"
 
 import { MovieGrid } from "@/components/MovieGrid/MovieGrid"
-import { useAppSelector, useAppDispatch } from "@/store/hooks"
-import { clearMovies, RecentlyViewedMovie } from "@/store/recentlyViewedSlice"
+import { useAppDispatch, useAppSelector } from "@/store/hooks"
+import { clearMovies } from "@/store/recentlyViewedSlice"
 import Link from "next/link"
-import { HiArrowLeft } from "react-icons/hi2"
-import { HiTrash } from "react-icons/hi2"
+import { useCallback } from "react"
+import { HiArrowLeft, HiTrash } from "react-icons/hi2"
 import styles from "./RecentlyViewedPage.module.css"
+
+const formatTimeAgo = (date: Date) => {
+    const now = new Date()
+    const diff = now.getTime() - date.getTime()
+    const minutes = Math.floor(diff / (1000 * 60))
+    const hours = Math.floor(diff / (1000 * 60 * 60))
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+
+    if (minutes < 1) return "Just now"
+    if (minutes < 60) return `${minutes}m ago`
+    if (hours < 24) return `${hours}h ago`
+    return `${days}d ago`
+}
 
 export default function RecentlyViewedPage() {
     const recentlyViewed = useAppSelector(
@@ -14,22 +27,9 @@ export default function RecentlyViewedPage() {
     )
     const dispatch = useAppDispatch()
 
-    const handleClearHistory = () => {
+    const handleClearHistory = useCallback(() => {
         dispatch(clearMovies())
-    }
-
-    const formatTimeAgo = (timestamp: number) => {
-        const now = Date.now()
-        const diff = now - timestamp
-        const minutes = Math.floor(diff / (1000 * 60))
-        const hours = Math.floor(diff / (1000 * 60 * 60))
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-
-        if (minutes < 1) return "Just now"
-        if (minutes < 60) return `${minutes}m ago`
-        if (hours < 24) return `${hours}h ago`
-        return `${days}d ago`
-    }
+    }, [dispatch])
 
     return (
         <div className={styles.pageContainer}>
@@ -82,22 +82,10 @@ export default function RecentlyViewedPage() {
                             </h2>
                             <p className={styles.recentMoviesSubtitle}>
                                 Last viewed:{" "}
-                                {formatTimeAgo(
-                                    recentlyViewed[0]?.viewedAt || 0,
-                                )}
+                                {formatTimeAgo(recentlyViewed[0].viewedAt)}
                             </p>
                         </div>
-                        <MovieGrid
-                            movies={recentlyViewed.map(
-                                (movie: RecentlyViewedMovie) => ({
-                                    imdbID: movie.imdbID,
-                                    Title: movie.Title,
-                                    Year: movie.Year,
-                                    Poster: movie.Poster,
-                                    imdbRating: movie.imdbRating,
-                                }),
-                            )}
-                        />
+                        <MovieGrid movies={recentlyViewed} />
                     </div>
                 )}
             </div>

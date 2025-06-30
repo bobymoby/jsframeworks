@@ -1,17 +1,19 @@
+import { MovieDetailsClient } from "@/components/UtilityComponents/MovieDetailsClient"
 import { findMovieByImdbID } from "@/omdb/omdb-server-requests"
-import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { HiArrowLeft } from "react-icons/hi2"
+import { notFound } from "next/navigation"
 import { FaStar } from "react-icons/fa"
-import { MovieDetailsClient } from "./MovieDetailsClient"
+import { HiArrowLeft } from "react-icons/hi2"
 import styles from "./MovieDetailsPage.module.css"
+
+interface MovieDetailsPageProps {
+    params: Promise<{ id: string }>
+}
 
 export default async function MovieDetailsPage({
     params,
-}: {
-    params: Promise<{ id: string }>
-}) {
+}: MovieDetailsPageProps) {
     const { id } = await params
     const movie = await findMovieByImdbID(id)
 
