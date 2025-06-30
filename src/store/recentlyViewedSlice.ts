@@ -12,6 +12,11 @@ const STORAGE_KEY = "recentlyViewedMovies"
 
 const loadInitialState = (): RecentlyViewedState => {
     try {
+        // window=undefined in server side
+        if (typeof window === "undefined") {
+            return { movies: [] }
+        }
+
         const stored = localStorage.getItem(STORAGE_KEY)
         if (stored) {
             return { movies: JSON.parse(stored) }
