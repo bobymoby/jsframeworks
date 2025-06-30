@@ -1,7 +1,7 @@
 .pageContainer {
     min-height: 100vh;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 2rem 1rem;
+    padding: 32px 16px;
     padding-top: 100px;
 }
 
@@ -11,20 +11,20 @@
 }
 
 .pageHeader {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
 }
 
 .headerTop {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
 }
 
 .backLink {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
     color: white;
     text-decoration: none;
     font-weight: 500;
@@ -36,22 +36,22 @@
 }
 
 .backIcon {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 20px;
+    height: 20px;
 }
 
 .clearHistoryButton {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 0.875rem;
+    font-size: 14px;
 }
 
 .clearHistoryButton:hover {
@@ -60,20 +60,20 @@
 }
 
 .clearIcon {
-    width: 1rem;
-    height: 1rem;
+    width: 16px;
+    height: 16px;
 }
 
 .pageTitle {
-    font-size: 2.5rem;
+    font-size: 40px;
     font-weight: 700;
     color: white;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 8px 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .pageSubtitle {
-    font-size: 1.125rem;
+    font-size: 18px;
     color: rgba(255, 255, 255, 0.9);
     margin: 0;
     font-weight: 400;
@@ -90,22 +90,22 @@
     text-align: center;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    padding: 3rem 2rem;
+    border-radius: 16px;
+    padding: 48px 32px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .noRecentTitle {
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 600;
     color: white;
-    margin: 0 0 1rem 0;
+    margin: 0 0 16px 0;
 }
 
 .noRecentText {
-    font-size: 1rem;
+    font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 2rem 0;
+    margin: 0 0 32px 0;
 }
 
 .browseMoviesButton {
@@ -113,8 +113,8 @@
     align-items: center;
     background: white;
     color: #667eea;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
+    padding: 12px 24px;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.2s ease;
@@ -128,24 +128,24 @@
 .recent-movies-section {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    padding: 2rem;
+    border-radius: 16px;
+    padding: 32px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .recent-movies-header {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
 }
 
 .recent-movies-title {
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 600;
     color: white;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 8px 0;
 }
 
 .recent-movies-subtitle {
-    font-size: 0.875rem;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
 }
