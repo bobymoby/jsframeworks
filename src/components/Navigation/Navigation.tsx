@@ -1,15 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { HiClock } from "react-icons/hi2"
 import styles from "./Navigation.module.css"
 
 export const Navigation: React.FC = () => {
-    const pathname = usePathname()
-
-    if (pathname === "/") return null
-
     return (
         <nav className={styles.navigation}>
             <div className={styles.navContainer}>

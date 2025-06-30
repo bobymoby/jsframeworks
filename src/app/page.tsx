@@ -3,9 +3,7 @@
 import { MovieGrid } from "@/components/MovieGrid/MovieGrid"
 import { SearchBar } from "@/components/SearchBar/SearchBar"
 import { MovieDetailsShort } from "@/omdb/DTOs/movieDetails"
-import Link from "next/link"
 import { useCallback, useMemo, useState } from "react"
-import { HiClock } from "react-icons/hi2"
 import styles from "./HomePage.module.css"
 import { getPopularMovies } from "@/omdb/omdb-client-requests"
 import { searchMovie } from "@/omdb/omdb-server-requests"
@@ -50,22 +48,6 @@ export default function HomePage() {
     return (
         <div className={styles.pageContainer}>
             <div className={styles.pageContent}>
-                <div className={styles.pageHeader}>
-                    <div className={styles.headerTop}>
-                        <h1 className={styles.pageTitle}>Movie Explorer</h1>
-                        <Link
-                            href="/recently-viewed"
-                            className={styles.recentLink}
-                        >
-                            <HiClock className={styles.recentIcon} />
-                            Recently Viewed
-                        </Link>
-                    </div>
-                    <p className={styles.pageSubtitle}>
-                        Discover and search for your favorite movies
-                    </p>
-                </div>
-
                 <SearchBar onSearch={handleSearch} />
 
                 {showSearchResults && (

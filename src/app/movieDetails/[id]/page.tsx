@@ -34,11 +34,7 @@ export default async function MovieDetailsPage({
                         <div className={styles.moviePosterSection}>
                             <div className={styles.moviePosterContainer}>
                                 <Image
-                                    src={
-                                        movie.Poster !== "N/A"
-                                            ? movie.Poster
-                                            : ""
-                                    }
+                                    src={movie.Poster}
                                     alt={`${movie.Title} poster`}
                                     fill
                                     className={styles.moviePoster}
