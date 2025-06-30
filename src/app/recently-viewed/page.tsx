@@ -8,12 +8,12 @@ import { useCallback } from "react"
 import { HiArrowLeft, HiTrash } from "react-icons/hi2"
 import styles from "./RecentlyViewedPage.module.css"
 
-const formatTimeAgo = (date: Date) => {
-    const now = new Date()
-    const diff = now.getTime() - date.getTime()
-    const minutes = Math.floor(diff / (1000 * 60))
-    const hours = Math.floor(diff / (1000 * 60 * 60))
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+const formatTimeAgo = (timestamp: number) => {
+    const now = Date.now()
+    const diff = now - timestamp
+    const minutes = Math.floor(diff / 60)
+    const hours = Math.floor(diff / (60 * 60))
+    const days = Math.floor(diff / (60 * 60 * 24))
 
     if (minutes < 1) return "Just now"
     if (minutes < 60) return `${minutes}m ago`

@@ -1,7 +1,7 @@
 import { MovieDetailsShort } from "@/omdb/DTOs/movieDetails"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-export type RecentlyViewedMovie = MovieDetailsShort & { viewedAt: Date }
+export type RecentlyViewedMovie = MovieDetailsShort & { viewedAt: number }
 
 interface RecentlyViewedState {
     movies: RecentlyViewedMovie[]
@@ -13,9 +13,10 @@ const STORAGE_KEY = "recentlyViewedMovies"
 const loadInitialState = (): RecentlyViewedState => {
     try {
         const stored = localStorage.getItem(STORAGE_KEY)
-        return {
-            movies: stored ? JSON.parse(stored) : [],
+        if (stored) {
+            return { movies: JSON.parse(stored) }
         }
+        return { movies: [] }
     } catch (error) {
         console.error(
             "Error loading recently viewed movies from localStorage:",
@@ -33,7 +34,10 @@ const recentlyViewedSlice = createSlice({
             state,
             action: PayloadAction<Omit<RecentlyViewedMovie, "viewedAt">>,
         ) => {
-            const newMovie = { ...action.payload, viewedAt: new Date() }
+            const newMovie = {
+                ...action.payload,
+                viewedAt: Date.now(),
+            }
 
             const filtered = state.movies.filter(
                 (m) => m.imdbID !== newMovie.imdbID,
