@@ -49,7 +49,7 @@ export default async function MovieDetailsPage({
                                         {movie.Title}
                                     </h1>
                                     <p className={styles.movieMeta}>
-                                        {movie.Year} • {movie.Runtime} •{" "}
+                                        {movie.Year} | {movie.Runtime} |{" "}
                                         {movie.Rated}
                                     </p>
                                 </div>
