@@ -6,13 +6,13 @@ import { FaStar } from "react-icons/fa"
 import styles from "./MovieCard.module.css"
 
 interface MovieCardProps {
-    movie: MovieDetailsShort & { rating?: number }
+    movie: MovieDetailsShort & { imdbRating?: string }
 }
 
 export const MovieCard: FC<MovieCardProps> = ({ movie }) => {
     const formattedRating = useMemo(() => {
-        return movie.rating ? movie.rating.toFixed(1) : "N/A"
-    }, [movie.rating])
+        return movie.imdbRating ?? "N/A"
+    }, [movie.imdbRating])
 
     const imageAlt = useMemo(() => {
         return `${movie.Title} poster`

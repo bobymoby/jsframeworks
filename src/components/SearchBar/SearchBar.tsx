@@ -3,14 +3,13 @@
 import { FC, useCallback, useState } from "react"
 import { HiMagnifyingGlass } from "react-icons/hi2"
 import styles from "./SearchBar.module.css"
+import { redirect } from "next/navigation"
 
 interface SearchBarProps {
-    onSearch: (query: string) => void
     placeholder?: string
 }
 
 export const SearchBar: FC<SearchBarProps> = ({
-    onSearch,
     placeholder = "Search for movies...",
 }) => {
     const [query, setQuery] = useState("")
@@ -19,10 +18,11 @@ export const SearchBar: FC<SearchBarProps> = ({
         (e: React.FormEvent) => {
             e.preventDefault()
             if (query.trim()) {
-                onSearch(query.trim())
+                // onSearch(query.trim())
+                redirect(`/?query=${encodeURIComponent(query.trim())}`)
             }
         },
-        [query, onSearch],
+        [query],
     )
 
     const handleInputChange = useCallback(

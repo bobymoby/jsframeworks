@@ -1,72 +1,45 @@
-"use client"
+"use server"
 
 import { MovieGrid } from "@/components/MovieGrid/MovieGrid"
 import { SearchBar } from "@/components/SearchBar/SearchBar"
 import { MovieDetailsShort } from "@/omdb/DTOs/movieDetails"
-import { useCallback, useMemo, useState } from "react"
 import styles from "./HomePage.module.css"
 import { getPopularMovies } from "@/omdb/omdb-client-requests"
 import { searchMovie } from "@/omdb/omdb-server-requests"
+import Link from "next/link"
 
 const initialMovies = getPopularMovies()
 
-export default function HomePage() {
-    const [movies, setMovies] = useState<MovieDetailsShort[]>(initialMovies)
-    const [loading, setLoading] = useState(false)
-    const [searchQuery, setSearchQuery] = useState("")
-
-    const handleSearch = useCallback(async (query: string) => {
-        setSearchQuery(query)
-        setLoading(true)
-        try {
-            const searchResults = await searchMovie(query)
-            setMovies(searchResults)
-        } catch (error) {
-            console.error("Error searching movies:", error)
-        } finally {
-            setLoading(false)
-        }
-    }, [])
-
-    const handleClearSearch = useCallback(() => {
-        setSearchQuery("")
-        setMovies(initialMovies)
-    }, [])
-
-    const showSearchResults = useMemo(() => {
-        return searchQuery && !loading
-    }, [searchQuery, loading])
-
-    const showPopularSection = useMemo(() => {
-        return !searchQuery && !loading
-    }, [searchQuery, loading])
-
-    const searchResultsText = useMemo(() => {
-        return `Search results for: "${searchQuery}"`
-    }, [searchQuery])
+export default async function HomePage({
+    searchParams,
+}: {
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+    const query = ((await searchParams).query as string) || ""
+    let movies: MovieDetailsShort[] = initialMovies
+    if (query) {
+        movies = await searchMovie(query)
+    }
 
     return (
         <div className={styles.pageContainer}>
             <div className={styles.pageContent}>
-                <SearchBar onSearch={handleSearch} />
+                <SearchBar />
 
-                {showSearchResults && (
+                {query && (
                     <div className={styles.searchResults}>
                         <div className={styles.searchResultsBadge}>
                             <span className={styles.searchResultsText}>
-                                {searchResultsText}
+                                {`Search results for: "${query}"`}
                             </span>
-                            <button
-                                onClick={handleClearSearch}
-                                className={styles.clearSearchButton}
-                            >
-                                Clear search
-                            </button>
+                            <div className={styles.clearSearchButton}>
+                                <Link href="/">Clear search</Link>
+                            </div>
                         </div>
                     </div>
                 )}
 
-                {showPopularSection && (
+                {!query && (
                     <div className={styles.popularSection}>
                         <h2 className={styles.popularTitle}>Popular Movies</h2>
                         <p className={styles.popularSubtitle}>
@@ -75,7 +48,7 @@ export default function HomePage() {
                     </div>
                 )}
 
-                <MovieGrid movies={movies} loading={loading} />
+                <MovieGrid movies={movies} />
             </div>
         </div>
     )

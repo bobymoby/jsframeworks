@@ -1,3 +1,5 @@
+// "use client"
+
 import { MovieDetailsShort } from "@/omdb/DTOs/movieDetails"
 import { FC, useMemo } from "react"
 import { MovieCard } from "../MovieCard/MovieCard"
